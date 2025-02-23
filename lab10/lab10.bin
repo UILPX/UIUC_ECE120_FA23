@@ -1,0 +1,35 @@
+; This is the file you will use for the lab assignment
+; Make sure to comment your code properly and don't exceed 
+; the line limitation for this assignment.  Good luck!
+
+0011 0001 0000 0000 ; x3100 - starting address of the program
+
+; The program description and code starts here
+;Name: XP Liu
+;Date: 11/10/2023
+;General purpose: find the sum of all positive numbers stored
+;load the number from corresponding location based on the pointer
+;evaluate the sign of the number
+;add to the sum if the number is positive
+;counter minus 1 and pointer add 1 after each cycle
+;repeat the step until all the number have been examined
+
+;R1 is the current number from the memory
+;R3 is the location of the numbers in memory
+;R4 is the counter for the loop
+;R5 is the sum of all positive number
+
+1110 011 000110001; load the adreess of the first number to R3(x3132)
+0101 101 101 1 00000; set R5 to zero by AND with x0000
+0001 100 101 1 01010; set R4 to ten by adding 10 to R4
+
+0110 001 011 000000; load the number in memory address R3 to R1
+0000 110 000000001; check weather the number is positive, if positive, add to r5, if not, skip the
+;next step
+0001 101 101 0 00 001; R5 <- R5+R1, add the number R1 to R5
+0001 011 011 1 00001; set R3 to R3+1, add one to location pointer
+0001 100 100 1 11111; R4 <- R4-1, minus one to the counter of the loop
+0000 001 111111010; check for the cycle runed, if less then 10 cycle is run, go to the load number 
+;step, end cycle if ten cycle is runed.
+
+1111 0000 0010 0101; halt the program.

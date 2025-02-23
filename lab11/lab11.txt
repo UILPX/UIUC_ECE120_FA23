@@ -1,0 +1,21 @@
+Question 1: Describe the errors that occur when trying to assemble lab11.asm. Identify the cause of each error.
+First the program does not have a start and end. So change x3000 to .ORIG and add a .END to the last line.
+Then the program does not initialize the value for R2 and R0. So set R2 to -1 and set R0 to 0 at the begining using lable.
+There is no lable for two of the .FILL, so I lable them to INITIAL and NEGATIVE.
+Change the x300F in the innerloop to INITIAL
+Change xxxx in the sti opcode to RESULT
+Change BRpz to BRzp for the outerloop
+
+Question 2: For each label in your code (with all bugs fixed), write down the corresponding memory location. 
+INNERLOOP:	x3006
+OUTERLOOP:	x3005
+RESULT: 	x3012
+INPUT:		x300F
+INITIAL:	x3010
+NEGATIVE:	x3011
+
+
+
+
+Question 3: Between using labels and explicit memory locations/offsets, which one makes the most sense, and why?
+Labels make the most sense because it make editing much easier. The function of the program won't change when adding or deleting a new line.
